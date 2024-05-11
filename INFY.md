@@ -2780,14 +2780,14 @@ currentText2 = Color3.new(0, 0, 0)
 currentScroll = Color3.fromRGB(78,78,79)
 
 defaultsettings = {
-	prefix = ';';
+	prefix = ']';
 	StayOpen = false;
 	espTransparency = 0.3;
 	keepIY = true;
 	logsEnabled = false;
 	jLogsEnabled = false;
 	aliases = {};
-	binds = {};
+	binds = {{KEY = Enum.KeyCode.LeftControl,ISKEYUP = false,COMMAND = "clicktp"}};
 	WayPoints = {};
 	PluginsTable = {};
 	currentShade1 = {currentShade1.R,currentShade1.G,currentShade1.B};
@@ -2802,14 +2802,14 @@ defaultsettings = {
 defaults = HttpService:JSONEncode(defaultsettings)
 nosaves = false
 useFactorySettings = function()
-    prefix = ';'
+    prefix = ']'
     StayOpen = false
     KeepInfYield = true
     espTransparency = 0.3
     logsEnabled = false
     jLogsEnabled = false
     aliases = {}
-    binds = {}
+    binds = {{KEY = Enum.KeyCode.LeftControl,ISKEYUP = false,COMMAND = "clicktp"}}
     WayPoints = {}
     PluginsTable = {}
 end
@@ -2822,14 +2822,14 @@ function saves()
 			if readfile("IY_FE.iy") ~= nil then
 				local success, response = pcall(function()
 					local json = HttpService:JSONDecode(readfile("IY_FE.iy"))
-					if json.prefix ~= nil then prefix = json.prefix else prefix = ';' end
+					if json.prefix ~= nil then prefix = json.prefix else prefix = ']' end
 					if json.StayOpen ~= nil then StayOpen = json.StayOpen else StayOpen = false end
 					if json.keepIY ~= nil then KeepInfYield = json.keepIY else KeepInfYield = true end
 					if json.espTransparency ~= nil then espTransparency = json.espTransparency else espTransparency = 0.3 end
 					if json.logsEnabled ~= nil then logsEnabled = json.logsEnabled else logsEnabled = false end
 					if json.jLogsEnabled ~= nil then jLogsEnabled = json.jLogsEnabled else jLogsEnabled = false end
 					if json.aliases ~= nil then aliases = json.aliases else aliases = {} end
-					if json.binds ~= nil then binds = (json.binds or {}) else binds = {} end
+					if json.binds ~= nil then binds = (json.binds or {{KEY = Enum.KeyCode.LeftControl,ISKEYUP = false,COMMAND = "clicktp"}}) else binds = {} end
 					if json.spawnCmds ~= nil then spawnCmds = json.spawnCmds end
 					if json.WayPoints ~= nil then AllWaypoints = json.WayPoints else WayPoints = {} AllWaypoints = {} end
 					if json.PluginsTable ~= nil then PluginsTable = json.PluginsTable else PluginsTable = {} end
